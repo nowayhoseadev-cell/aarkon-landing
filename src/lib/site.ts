@@ -1,6 +1,6 @@
 export const site = {
   name: "AARKON",
-  url: "https://aarkon.com",
+  url: "https://www.aarkcon.com",
   description:
     "AARKON is an independent software lab building local-first tools, verification infrastructure, and operational systems.",
   mission:
