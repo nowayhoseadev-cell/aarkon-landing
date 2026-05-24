@@ -1,0 +1,429 @@
+@import "tailwindcss";
+@source "../**/*.{ts,tsx,mdx}";
+
+@theme {
+  --color-aarkon-bg: #070808;
+  --color-aarkon-panel: #101211;
+  --color-aarkon-panel-soft: #141714;
+  --color-aarkon-line: #252923;
+  --color-aarkon-line-soft: #1b1f1b;
+  --color-aarkon-text: #e7ece8;
+  --color-aarkon-muted: #8d968f;
+  --color-aarkon-dim: #59625c;
+  --color-aarkon-mint: #91d3b8;
+  --color-aarkon-cyan: #9fbfd0;
+  --color-aarkon-gold: #d2ba7b;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #070808;
+  --foreground: #e7ece8;
+}
+
+* {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  overflow-x: clip;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(145, 211, 184, 0.04), transparent 22rem),
+    linear-gradient(90deg, rgba(159, 191, 208, 0.035), transparent 34rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: geometricPrecision;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(231, 236, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 236, 232, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 8, 8, 0.8) 68%, #070808 100%);
+}
+
+::selection {
+  background: rgba(145, 211, 184, 0.24);
+  color: #f8fffb;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.reveal {
+  animation: reveal 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 90ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 170ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 250ms;
+}
+
+.hero-atmosphere {
+  isolation: isolate;
+}
+
+.hero-atmosphere::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(145, 211, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 191, 208, 0.035) 1px, transparent 1px);
+  background-position: 0 0;
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 58% 38%, black, transparent 72%);
+  animation: grid-drift 28s linear infinite;
+}
+
+.hero-atmosphere::after {
+  position: absolute;
+  inset: 14% 8% auto auto;
+  z-index: -1;
+  width: min(38rem, 64vw);
+  height: min(22rem, 42vw);
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(circle, rgba(145, 211, 184, 0.1), transparent 62%);
+  filter: blur(22px);
+  opacity: 0.36;
+  animation: operational-pulse 7s ease-in-out infinite;
+}
+
+.hero-scanlines {
+  opacity: 0.28;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 7px,
+    rgba(231, 236, 232, 0.03) 8px
+  );
+  mask-image: linear-gradient(to bottom, transparent, black 24%, transparent 82%);
+  animation: scanline-drift 12s linear infinite;
+}
+
+.mobile-menu-panel {
+  transform-origin: top right;
+  animation: menu-dropdown 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.texture-card,
+.mock-window,
+.texture-button {
+  position: relative;
+}
+
+.texture-card::before,
+.mock-window::before,
+.texture-button::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(231, 236, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 236, 232, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 28% 0%, rgba(145, 211, 184, 0.08), transparent 34%);
+  background-size: 18px 18px, 18px 18px, 100% 100%;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.texture-card > *,
+.mock-window > *,
+.texture-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.texture-button {
+  overflow: hidden;
+}
+
+.texture-button::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.2) 46%, transparent 62%);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 180ms ease, transform 420ms ease;
+}
+
+.texture-button:hover::after {
+  opacity: 0.45;
+  transform: translateX(100%);
+}
+
+.signal-sweep {
+  animation: signal-sweep 8s ease-in-out infinite;
+}
+
+.node-pulse {
+  animation: node-pulse 3.8s ease-in-out infinite;
+}
+
+.status-dot {
+  box-shadow: 0 0 12px rgba(145, 211, 184, 0.25);
+  animation: status-dot 4s ease-in-out infinite;
+}
+
+.drifting-grid {
+  animation: grid-drift 24s linear infinite;
+}
+
+.micro-scanline {
+  opacity: 0.22;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(159, 191, 208, 0.07) 48%,
+    transparent 52%
+  );
+  transform: translateY(-100%);
+  animation: micro-scanline 8s ease-in-out infinite;
+}
+
+.operational-glow::after {
+  position: absolute;
+  inset: auto 14% -22% 14%;
+  pointer-events: none;
+  content: "";
+  height: 38%;
+  background: radial-gradient(circle, rgba(145, 211, 184, 0.14), transparent 64%);
+  filter: blur(18px);
+  opacity: 0.28;
+  animation: operational-pulse 6s ease-in-out infinite;
+}
+
+.trace-path {
+  stroke: rgba(145, 211, 184, 0.84);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 8px rgba(145, 211, 184, 0.24));
+  animation: trace-draw 6s ease-in-out infinite;
+}
+
+.trace-path-secondary {
+  stroke: rgba(159, 191, 208, 0.24);
+  stroke-width: 6;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: none;
+}
+
+.terminal-window {
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-window::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(145, 211, 184, 0.035), transparent);
+  transform: translateY(-100%);
+  animation: terminal-scan 5.5s ease-in-out infinite;
+}
+
+.terminal-row {
+  opacity: 0.58;
+  animation: terminal-row 3.6s ease-in-out infinite;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 42px 42px;
+  }
+}
+
+@keyframes scanline-drift {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 96px;
+  }
+}
+
+@keyframes menu-dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes signal-sweep {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: translateX(-18%);
+  }
+  48% {
+    opacity: 0.72;
+    transform: translateX(18%);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.44;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes status-dot {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+  45% {
+    opacity: 1;
+  }
+}
+
+@keyframes micro-scanline {
+  0%,
+  28% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  48% {
+    opacity: 0.3;
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes operational-pulse {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+@keyframes trace-draw {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0.28;
+  }
+  38%,
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -1;
+    opacity: 0.28;
+  }
+}
+
+@keyframes terminal-scan {
+  0%,
+  34% {
+    transform: translateY(-100%);
+  }
+  72%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes terminal-row {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  42% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
