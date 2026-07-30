@@ -8,7 +8,7 @@ export const site = {
   summary:
     "A home for focused products and experiments shaped by clarity, trust, and careful engineering.",
   links: {
-    github: "https://github.com/aarkon",
+    github: "https://github.com/nowayhoseadev-cell",
     x: "https://x.com/aarkon",
     contact: "mailto:hello@aarkon.com",
   },
