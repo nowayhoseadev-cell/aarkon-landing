@@ -3,7 +3,9 @@ id: "wiki-sources-index"
 kind: "index"
 title: "Sources Index"
 source_paths:
+  - "DESIGN.md"
   - "README.md"
+  - "docs/aark-design-system.md"
   - "package.json"
   - "src/lib/site.ts"
   - "src/content/projects.ts"
@@ -16,13 +18,14 @@ source_paths:
   - "src/components/ui/StatusBadge.tsx"
   - "public/brand/aarkon-mark.png"
   - "src/app/icon.png"
-updated_at: "2026-05-24T16:39:41.806Z"
+updated_at: "2026-05-24T18:07:53Z"
 status: "active"
 tags:
   - "sources"
   - "index"
 links:
   - "wiki/index"
+  - "wiki/domains/aarkon-design-system"
   - "wiki/domains/aarkon-identity"
   - "wiki/domains/project-registry"
   - "wiki/workflows/product-motion-transitions"
@@ -37,6 +40,8 @@ Source-backed notes in this vault cite real repository files in frontmatter.
 
 | Source | Purpose |
 | --- | --- |
+| `DESIGN.md` | Short design-system reference for agents and future app work. |
+| `docs/aark-design-system.md` | Canonical AARKON design-system guide and future-app adoption rules. |
 | `src/lib/site.ts` | Brand, social links, navigation, and principles. |
 | `src/content/projects.ts` | Evidence-backed project registry, source paths, warnings, previews, and GitHub metadata fallback logic. |
 | `src/app/page.tsx` | Landing page section composition. |

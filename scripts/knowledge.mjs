@@ -210,16 +210,17 @@ function compile() {
       id: "wiki-index",
       kind: "index",
       title: "AARKON Knowledge Index",
-      source_paths: ["README.md", "src/lib/site.ts", "src/content/projects.ts", "src/app/page.tsx"],
+      source_paths: ["README.md", "docs/aark-design-system.md", "src/lib/site.ts", "src/content/projects.ts", "src/app/page.tsx"],
       tags: ["aarkon", "index"],
       links: [
+        "wiki/domains/aarkon-design-system",
         "wiki/domains/index",
         "wiki/workflows/index",
         "wiki/decisions/index",
         "wiki/sources/index",
       ],
     },
-    `# AARKON Knowledge Index\n\nThis vault is the long-term planning and architecture surface for the AARKON landing page and future AARKON systems.\n\n## Start Here\n\n- [[wiki/domains/index]] for product and brand domains.\n- [[wiki/workflows/index]] for delivery and maintenance workflows.\n- [[wiki/decisions/index]] for durable technical decisions.\n- [[wiki/sources/index]] for source maps back to real repository files.`
+    `# AARKON Knowledge Index\n\nThis vault is the long-term planning and architecture surface for the AARKON landing page and future AARKON systems.\n\n## Start Here\n\n- [[wiki/domains/aarkon-design-system]] for reusable UI conventions.\n- [[wiki/domains/index]] for product and brand domains.\n- [[wiki/workflows/index]] for delivery and maintenance workflows.\n- [[wiki/decisions/index]] for durable technical decisions.\n- [[wiki/sources/index]] for source maps back to real repository files.`
   );
 
   writeNote(
@@ -228,11 +229,40 @@ function compile() {
       id: "wiki-domains-index",
       kind: "index",
       title: "Domains Index",
-      source_paths: ["src/content/projects.ts", "src/components/sections/Projects.tsx"],
+      source_paths: ["docs/aark-design-system.md", "src/app/globals.css", "src/content/projects.ts", "src/components/sections/Projects.tsx"],
       tags: ["domains", "index"],
-      links: ["wiki/index", "wiki/domains/aarkon-identity", "wiki/domains/project-registry"],
+      links: ["wiki/index", "wiki/domains/aarkon-design-system", "wiki/domains/aarkon-identity", "wiki/domains/project-registry"],
     },
-    `# Domains Index\n\nAARKON knowledge is organized around the domains the site communicates, not around folders.\n\n## Domains\n\n- [[wiki/domains/aarkon-identity]] describes the parent software-lab identity.\n- [[wiki/domains/project-registry]] describes current projects and how new projects join the public surface.`
+    `# Domains Index\n\nAARKON knowledge is organized around the domains the site communicates, not around folders.\n\n## Domains\n\n- [[wiki/domains/aarkon-design-system]] describes the reusable AARKON visual system for future apps.\n- [[wiki/domains/aarkon-identity]] describes the parent software-lab identity.\n- [[wiki/domains/project-registry]] describes current projects and how new projects join the public surface.`
+  );
+
+  writeNote(
+    "wiki/domains/aarkon-design-system.md",
+    {
+      id: "domain-aarkon-design-system",
+      kind: "domain",
+      title: "AARKON Design System",
+      source_paths: [
+        "docs/aark-design-system.md",
+        "DESIGN.md",
+        "src/app/globals.css",
+        "src/components/layout/SiteHeader.tsx",
+        "src/components/sections/Hero.tsx",
+        "src/components/sections/Projects.tsx",
+        "src/components/visuals/SystemSignal.tsx",
+        "src/components/ui/ButtonLink.tsx",
+        "src/components/ui/StatusBadge.tsx",
+      ],
+      tags: ["domain", "design-system", "frontend"],
+      links: [
+        "wiki/domains/index",
+        "wiki/domains/aarkon-identity",
+        "wiki/workflows/product-motion-transitions",
+        "wiki/workflows/cult-ui-component-adoption",
+        "wiki/sources/index",
+      ],
+    },
+    `# AARKON Design System\n\nThe AARKON design system is the reusable visual convention for the landing page and future product apps. The canonical guide is \`docs/aark-design-system.md\`; \`DESIGN.md\` is the quick reference for agents and developers.\n\n## Token Contract\n\nThe base token contract comes from \`src/app/globals.css\`: \`aarkon-bg\`, \`aarkon-panel\`, \`aarkon-panel-soft\`, \`aarkon-line\`, \`aarkon-line-soft\`, \`aarkon-text\`, \`aarkon-muted\`, \`aarkon-dim\`, \`aarkon-mint\`, \`aarkon-cyan\`, and \`aarkon-gold\`.\n\n## Component Language\n\nAARKON surfaces use dark technical backgrounds, restrained borders, 6-8px radius geometry, compact status badges, texture overlays, mock-window and terminal patterns, and local CSS motion that respects reduced-motion preferences.\n\n## Adoption Rule\n\nFuture apps may add local semantic status tokens for product-specific states, but the AARKON brand tokens remain the base layer. Product migrations should begin with tokens, typography, background treatment, and panel/card styling before changing navigation or workflows.`
   );
 
   writeNote(
@@ -412,7 +442,9 @@ function compile() {
       kind: "index",
       title: "Sources Index",
       source_paths: [
+        "DESIGN.md",
         "README.md",
+        "docs/aark-design-system.md",
         "package.json",
         "src/lib/site.ts",
         "src/content/projects.ts",
@@ -429,6 +461,7 @@ function compile() {
       tags: ["sources", "index"],
       links: [
         "wiki/index",
+        "wiki/domains/aarkon-design-system",
         "wiki/domains/aarkon-identity",
         "wiki/domains/project-registry",
         "wiki/workflows/product-motion-transitions",
@@ -443,6 +476,8 @@ Source-backed notes in this vault cite real repository files in frontmatter.
 
 | Source | Purpose |
 | --- | --- |
+| \`DESIGN.md\` | Short design-system reference for agents and future app work. |
+| \`docs/aark-design-system.md\` | Canonical AARKON design-system guide and future-app adoption rules. |
 | \`src/lib/site.ts\` | Brand, social links, navigation, and principles. |
 | \`src/content/projects.ts\` | Evidence-backed project registry, source paths, warnings, previews, and GitHub metadata fallback logic. |
 | \`src/app/page.tsx\` | Landing page section composition. |

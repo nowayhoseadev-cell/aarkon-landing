@@ -37,9 +37,14 @@ src/components/visuals/  Technical visual systems
 src/content/projects.ts  Evidence-backed project registry and GitHub metadata fetches
 src/lib/site.ts          Brand, navigation, social, and principle data
 public/brand/            AARKON emblem and cropped web mark assets
+docs/                    Canonical design-system documentation
 knowledge/               Obsidian-first repo knowledge vault
 scripts/knowledge.mjs    Local knowledge tooling
 ```
+
+## Design System
+
+Use [docs/aark-design-system.md](docs/aark-design-system.md) as the canonical AARKON design-system guide for future apps and product UI migrations. [DESIGN.md](DESIGN.md) is the short agent/developer reference. Start with the shared color tokens, typography, background treatment, and panel/card styling before changing product workflows.
 
 Future projects should be added to `src/content/projects.ts` with status, maturity, stack, features, proof points, warnings, links, preview rows, and source paths. If a project gets a dedicated public narrative later, add a route under `src/app/projects/` and link it from the project registry.
 
